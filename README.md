@@ -6,7 +6,7 @@ Este repositorio contiene un flujo de trabajo automatizado para gestionar, compi
 
 
 
-Diseñado originalmente para perfiles técnicos (Ingeniería de IA, Software y Automatización) que requieren adaptar su perfil a diferentes mercados como **Canadá** y **EE. UU.**.
+Diseñado originalmente para perfiles técnicos (Ingeniería de IA, Software y Automatización) que requieren adaptar su perfil a diferentes mercados como **Canadá** y **EE.UU.**
 
 
 
