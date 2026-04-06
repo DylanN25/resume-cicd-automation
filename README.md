@@ -6,7 +6,7 @@ Este repositorio contiene un flujo de trabajo automatizado para gestionar, compi
 
 
 
-Diseñado originalmente para perfiles técnicos (Ingeniería de IA, Software y Automatización) que requieren adaptar su perfil a diferentes mercados como **Canadá** y **EE. [cite\_start]UU.**[cite: 1, 11, 46].
+Diseñado originalmente para perfiles técnicos (Ingeniería de IA, Software y Automatización) que requieren adaptar su perfil a diferentes mercados como **Canadá** y **EE. UU.**.
 
 
 
@@ -14,7 +14,7 @@ Diseñado originalmente para perfiles técnicos (Ingeniería de IA, Software y A
 
 
 
-* **Multi-variante:** Gestión centralizada de diferentes versiones del CV (ej: AI Engineer, Software Developer, Industrial Automation)[cite: 11, 56].
+* **Multi-variante:** Gestión centralizada de diferentes versiones del CV (ej: AI Engineer, Software Developer, Industrial Automation).
 
 * **Compilación Dinámica:** Permite seleccionar qué archivo `.tex` compilar mediante un menú desplegable en GitHub Actions.
 
@@ -34,7 +34,7 @@ Diseñado originalmente para perfiles técnicos (Ingeniería de IA, Software y A
 
 * Una cuenta de **GitHub**.
 
-* Una cuenta de **Gmail** con un *App Password* generado para el envío de correos[cite: 3].
+* Una cuenta de **Gmail** con un *App Password* generado para el envío de correos.
 
 
 
@@ -42,9 +42,9 @@ Diseñado originalmente para perfiles técnicos (Ingeniería de IA, Software y A
 
 En tu repositorio, ve a **Settings > Secrets and Variables > Actions** y añade:
 
-* [cite\_start]`MAIL\_USERNAME`: Tu dirección de correo electrónico[cite: 3].
+* `MAIL_USERNAME`: Tu dirección de correo electrónico.
 
-* `MAIL\_PASSWORD`: Tu contraseña de aplicación de Google.
+* `MAIL_PASSWORD`: Tu contraseña de aplicación de Google.
 
 
 
@@ -64,13 +64,13 @@ En tu repositorio, ve a **Settings > Secrets and Variables > Actions** y añade:
 
 ## 🏗️ Estructura de Archivos
 
-* `/src`: Contiene los archivos `.tex`. [cite\_start]Los cambios realizados aquí disparan las validaciones del sistema[cite: 11, 51].
+* `/src`: Contiene los archivos `.tex`. Los cambios realizados aquí disparan las validaciones del sistema.
 
-* `.github/workflows/resume\_builder.yml`: La lógica de automatización que utiliza contenedores Docker para compilar LaTeX.
+* `.github/workflows/resume_builder.yml`: La lógica de automatización que utiliza contenedores Docker para compilar LaTeX.
 
 
 
-\---
+---
 
-\*Desarrollado por Joseph Naranjo - Ndigitalhorizon\*
+*Desarrollado por Joseph Naranjo - Ndigitalhorizon*
 
