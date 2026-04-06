@@ -1,4 +1,4 @@
-\# 🚀 Resume CI/CD Automation (LaTeX + GitHub Actions)
+# 🚀 Resume CI/CD Automation (LaTeX + GitHub Actions)
 
 
 
@@ -10,45 +10,45 @@ Diseñado originalmente para perfiles técnicos (Ingeniería de IA, Software y A
 
 
 
-\## 🛠️ Características Principales
+## 🛠️ Características Principales
 
 
 
-\* \*\*Multi-variante:\*\* Gestión centralizada de diferentes versiones del CV (ej: AI Engineer, Software Developer, Industrial Automation)\[cite: 11, 56].
+* \*\*Multi-variante:\*\* Gestión centralizada de diferentes versiones del CV (ej: AI Engineer, Software Developer, Industrial Automation)\[cite: 11, 56].
 
-\* \*\*Compilación Dinámica:\*\* Permite seleccionar qué archivo `.tex` compilar mediante un menú desplegable en GitHub Actions.
+* \*\*Compilación Dinámica:\*\* Permite seleccionar qué archivo `.tex` compilar mediante un menú desplegable en GitHub Actions.
 
-\* \*\*Notificaciones por Email:\*\* Envío automático del PDF generado a tu correo electrónico personal\[cite: 3].
+* \*\*Notificaciones por Email:\*\* Envío automático del PDF generado a tu correo electrónico personal\[cite: 3].
 
-\* \*\*Manejo de Errores:\*\* Notificación vía email con logs detallados en caso de fallos de sintaxis en LaTeX.
+* \*\*Manejo de Errores:\*\* Notificación vía email con logs detallados en caso de fallos de sintaxis en LaTeX.
 
-\* \*\*Infraestructura como Código:\*\* Elimina la dependencia de editores externos de pago como Overleaf.
-
-
-
-\## 🚀 Cómo usar este Repositorio
+* \*\*Infraestructura como Código:\*\* Elimina la dependencia de editores externos de pago como Overleaf.
 
 
 
-\### 1. Requisitos Previos
-
-\* Una cuenta de \*\*GitHub\*\*.
-
-\* Una cuenta de \*\*Gmail\*\* con un \*App Password\* generado para el envío de correos\[cite: 3].
+## 🚀 Cómo usar este Repositorio
 
 
 
-\### 2. Configuración de Secretos
+### 1. Requisitos Previos
+
+* Una cuenta de \*\*GitHub\*\*.
+
+* Una cuenta de \*\*Gmail\*\* con un \*App Password\* generado para el envío de correos\[cite: 3].
+
+
+
+### 2. Configuración de Secretos
 
 En tu repositorio, ve a \*\*Settings > Secrets and Variables > Actions\*\* y añade:
 
-\* \[cite\_start]`MAIL\_USERNAME`: Tu dirección de correo electrónico\[cite: 3].
+* \[cite\_start]`MAIL\_USERNAME`: Tu dirección de correo electrónico\[cite: 3].
 
-\* `MAIL\_PASSWORD`: Tu contraseña de aplicación de Google.
+* `MAIL\_PASSWORD`: Tu contraseña de aplicación de Google.
 
 
 
-\### 3. Ejecución del Workflow
+### 3. Ejecución del Workflow
 
 1\. Ve a la pestaña \*\*Actions\*\* en tu repositorio de GitHub.
 
@@ -62,11 +62,11 @@ En tu repositorio, ve a \*\*Settings > Secrets and Variables > Actions\*\* y añ
 
 
 
-\## 🏗️ Estructura de Archivos
+## 🏗️ Estructura de Archivos
 
-\* `/src`: Contiene los archivos `.tex`. \[cite\_start]Los cambios realizados aquí disparan las validaciones del sistema\[cite: 11, 51].
+* `/src`: Contiene los archivos `.tex`. \[cite\_start]Los cambios realizados aquí disparan las validaciones del sistema\[cite: 11, 51].
 
-\* `.github/workflows/resume\_builder.yml`: La lógica de automatización que utiliza contenedores Docker para compilar LaTeX.
+* `.github/workflows/resume\_builder.yml`: La lógica de automatización que utiliza contenedores Docker para compilar LaTeX.
 
 
 
