@@ -1,0 +1,70 @@
+name: "Dynamic Resume Builder & Deploy"
+
+on:
+  workflow_dispatch:
+    inputs:
+      resume_file:
+        description: 'Selecciona la variante de CV a compilar'
+        required: true
+        default: 'JosephNaranjo_Software.tex'
+        type: choice
+        options:
+          - JosephNaranjo_Electronics.tex
+          - JosephNaranjo_AI_Data.tex
+          - JosephNaranjo_Software.tex
+          - ALL
+
+jobs:
+  build_and_send:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Compile LaTeX
+        id: compile
+        uses: xu-cheng/latex-action@v3
+        with:
+          # Si eliges ALL, compila todo en /src. Si no, solo el archivo seleccionado.
+          root_file: ${{ github.event.inputs.resume_file == 'ALL' && 'src/*.tex' || format('src/{0}', github.event.inputs.resume_file) }}
+          continue_on_error: true 
+
+      - name: Send PDF on Success
+        if: steps.compile.outcome == 'success'
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          username: ${{ secrets.MAIL_USERNAME }}
+          password: ${{ secrets.MAIL_PASSWORD }}
+          subject: "✅ CV Generado: ${{ github.event.inputs.resume_file }} - Ndigitalhorizon"
+          to: dylan.naranjo@hotmail.com
+          from: GitHub Actions Automation
+          body: |
+            Hola Joseph, 
+            La compilación ha sido exitosa. Adjunto encontrarás la versión solicitada de tu resume.
+            
+            Archivo: ${{ github.event.inputs.resume_file }}
+            Timestamp: ${{ github.event.repository.updated_at }}
+          attachments: "src/*.pdf"
+
+      - name: Send Error Report on Failure
+        if: steps.compile.outcome == 'failure'
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          username: ${{ secrets.MAIL_USERNAME }}
+          password: ${{ secrets.MAIL_PASSWORD }}
+          subject: "❌ ERROR en Compilación LaTeX: ${{ github.event.inputs.resume_file }}"
+          to: dylan.naranjo@hotmail.com
+          from: GitHub Actions Automation
+          body: |
+            Atención: El archivo ${{ github.event.inputs.resume_file }} no pudo compilarse. 
+            
+            Posibles causas:
+            1. Error de sintaxis en el código LaTeX.
+            2. Falta algún paquete o recurso en la carpeta /src.
+            3. Error en la ruta del archivo.
+
+            Revisa los logs detallados en la pestaña 'Actions' de tu repositorio de GitHub.
