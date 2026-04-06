@@ -1,0 +1,187 @@
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[pdftex]{hyperref}
+\usepackage{fancyhdr}
+\usepackage{fontawesome}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\addtolength{\oddsidemargin}{-0.375in}
+\addtolength{\evensidemargin}{-0.375in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+\newcommand{\resumeItem}[2]{
+  \item\small{
+    \textbf{#1}{: #2 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-1pt}\item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-5pt}
+}
+
+\newcommand{\resumeSubItem}[2]{\resumeItem{#1}{#2}\vspace{-4pt}}
+
+\renewcommand{\labelitemii}{$\circ$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=*]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+\begin{document}
+
+%----------HEADING-----------------
+\begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+  \textbf{\href{https://joseph.ndigitalhorizon.com/}{\Large Joseph Naranjo}} & \faEnvelope\hspace{0.5em}Email :
+  \href{mailto:dylan.naranjo@hotmail.com}{dylan.naranjo@hotmail.com}\\
+  \href{https://joseph.ndigitalhorizon.com/}{https://joseph.ndigitalhorizon.com/} & \faPhone\hspace{0.5em}Phone : +14377775041 \\
+  \href{https://github.com/DylanN25}{GitHub: @joseph-naranjo} & \faLinkedin \hspace{0.5em}LinkedIn : \href{https://www.linkedin.com/in/joseph-naranjo/}{@joseph-naranjo}
+\end{tabular*}
+
+%----------INTRODUCTION-----------------
+\section{About Me}
+Electronic Engineer and Software Developer based in Barrie, Ontario, with production experience building full-stack systems for industrial and business environments. Specialized in backend architecture, database design, and integration of AI capabilities into real-world applications. Experienced shipping complete systems --- from database schema to frontend --- using PostgreSQL, Supabase, Next.js, and cloud infrastructure. Selected by Micro1 through competitive global AI-driven vetting for software engineering engagements.
+
+%----------KEY ACHIEVEMENTS-----------------
+\section{Key Achievements}
+\resumeSubHeadingListStart
+  \resumeSubItem{NASA Space Apps Challenge}{Global Finalist --- Top 45 Worldwide (2025)}
+  \resumeSubItem{Published Author}{\href{http://www.revistasocialfronteriza.com/ojs/index.php/rev/article/view/603}{``Application of Neural Networks and Computer Vision for NFT Hydroponic Crop Control Systems''}}
+\resumeSubHeadingListEnd
+
+%-----------EXPERIENCE-----------------
+\section{Experience}
+\resumeSubHeadingListStart
+
+  %--- Micro1 ---
+  \resumeSubheading
+    {Micro1}{Palo Alto, CA (Remote)}
+    {Software Engineer}{Contractor · Project-Based · [Mes] 2026 -- Present}
+  \resumeItemListStart
+    \resumeItem{Global Talent Selection}
+      {Selected through Micro1's AI-driven global talent vetting process, competing against engineers from top-tier international markets.}
+    \resumeItem{Engineering Standards}
+      {Delivering software engineering solutions under Silicon Valley engineering standards for project-based engagements.}
+    \resumeItem{Full-Stack Delivery}
+      {Delivering full-stack software solutions under Silicon Valley engineering standards, working remotely within cross-functional project-based engagements.}
+  \resumeItemListEnd
+
+  %--- Orillia ---
+  \resumeSubheading
+    {Orillia WoodWorking Inc.}{Orillia, ON}
+    {Automation \& Systems Engineer}{Full-Time · On-Site · Aug 2024 -- Present}
+  \resumeItemListStart
+    \resumeItem{Canadian Work Experience}
+      {Full-time, on-site engineering role within a Canadian manufacturing environment --- direct experience with Ontario industrial operations, safety standards, and cross-functional team collaboration.}
+    \resumeItem{ERP System Architecture}
+      {Developed a PostgreSQL-based ERP covering purchase/sales orders, work orders, quotations, inventory management, and material tracking --- integrated with the CMMS platform, tailored for custom manufacturing without fixed catalogs.}
+    \resumeItem{CMMS Development}
+      {Designed and built a full maintenance management system --- machine documentation, scheduled tasks, real-time status monitoring, and KPI dashboards.}
+    \resumeItem{IoT Backend Integration}
+      {Built real-time data pipelines connecting industrial hardware (PLCs, gateways) to Firebase and PostgreSQL backends, ensuring data redundancy and availability.}
+    \resumeItem{Database Design}
+      {Designed multi-schema PostgreSQL databases with RLS, trigger functions, and automated backup workflows via GitHub Actions.}
+  \resumeItemListEnd
+
+  %--- NDigital Horizon ---
+  \resumeSubheading
+    {NDigital Horizon}{Barrie, ON}
+    {Founder \& Lead AI Solutions Architect}{Self-Employed · [Mes] 202X -- Present}
+  \resumeItemListStart
+    \resumeItem{Technology Consultancy}
+      {Founded and operate a technology consultancy focused on AI automation and IIoT solutions for SMBs across Canada and Latin America.}
+    \resumeItem{Audi-Conta}
+      {Architected a tax automation platform that processes SRI XML invoices using AI (Vertex AI + Claude), reducing administrative processing time for SMB clients.}
+    \resumeItem{DK Sport Arena}
+      {Developed a booking and operations management system for DK Sport Arena, automating scheduling and client workflows.}
+    \resumeItem{Cloud Infrastructure}
+      {Architected a multi-tenant web stack combining Supabase (auth, PostgreSQL, real-time), Firebase (FCM, analytics, App Hosting), and Cloudflare R2 --- eliminating redundant services and optimizing infrastructure costs.}
+  \resumeItemListEnd
+
+\resumeSubHeadingListEnd
+
+%-----------TECHNICAL SKILLS-----------------
+\section{Technical Skills}
+\resumeSubHeadingListStart
+  \resumeSubItem{Backend \& Databases}
+    {PostgreSQL, Supabase, Firebase, REST APIs, Node-RED, SQL, Row-Level Security, Trigger Functions}
+  \resumeSubItem{Frontend \& Full-Stack}
+    {Next.js, React, TypeScript, HTML/CSS}
+  \resumeSubItem{AI Integration}
+    {Claude API, Vertex AI, Gemini API, RAG Systems}
+  \resumeSubItem{Programming}
+    {Python, JavaScript/TypeScript, SQL, C++, Matlab}
+  \resumeSubItem{DevOps \& Infrastructure}
+    {Docker, Git, GitHub Actions, Cloud (AWS, Google Cloud), Cloudflare R2}
+  \resumeSubItem{Systems}
+    {Industrial IoT, Modbus, PLCs, REST APIs}
+\resumeSubHeadingListEnd
+
+%-----------EDUCATION-----------------
+\section{Education}
+\resumeSubHeadingListStart
+  \resumeSubheading
+    {Georgian College}{Barrie, ON, CA}
+    {Graduate Certificate - Artificial Intelligence: Architecture, Design, and Implementation}{}
+  \resumeSubheading
+    {Salesian Polytechnic University}{Quito, EC}
+    {Bachelor of Engineering - Electronic Engineering}{}
+\resumeSubHeadingListEnd
+
+%-----------PROJECTS-----------------
+\section{Projects}
+\resumeSubHeadingListStart
+
+  \resumeSubItem{ERP \& CMMS Platform | Integrated Manufacturing Operations System}
+    {Designed and deployed a full-stack operations platform for a manufacturing plant, integrating a CMMS and ERP into a unified PostgreSQL backend. Supports purchase/sales orders, work orders, inventory management, and real-time machine monitoring --- replacing manual workflows across production, maintenance, and procurement teams.
+
+    Tech: PostgreSQL · Supabase · Next.js · Firebase · Docker · GitHub Actions · Row-Level Security}
+
+  \resumeSubItem{Audi-Conta | AI Tax Automation Platform}
+    {Built a SaaS platform for SMB clients that processes SRI XML invoices using AI (Vertex AI + Claude), automating tax document handling and reducing administrative overhead for small and medium businesses.
+
+    Tech: Vertex AI · Claude API · PostgreSQL · Supabase · Next.js}
+
+  \resumeSubItem{\href{https://github.com/DylanN25/SmartDiagnosticsFailure}{Smart Diagnostics Failure | AI-Powered Anomaly Detection System}}
+    {Developed an AI-powered system for industrial equipment failure detection using raw sensor data. Built and trained machine learning models in Python and PyTorch for anomaly detection and predictive analysis. Implemented a Modbus-based data acquisition layer and designed a scalable processing pipeline architected for both edge and cloud deployment.
+
+    Tech: Python · PyTorch · Modbus · scikit-learn · Real-Time Data Pipeline}
+
+\resumeSubHeadingListEnd
+
+%-----------CERTIFICATIONS-----------------
+\section{Certifications}
+\resumeSubHeadingListStart
+  \resumeSubItem{Certifications}
+    {AWS Academy Machine Learning Foundations (2025) \\ Google Developers Event --- Participation Certificate (Toronto, 2025)}
+\resumeSubHeadingListEnd
+
+\end{document}
