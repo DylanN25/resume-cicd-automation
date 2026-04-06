@@ -2,11 +2,11 @@
 
 
 
-Este repositorio contiene un flujo de trabajo automatizado para gestionar, compilar y enviar múltiples versiones de un currículum (CV) profesional utilizando \*\*LaTeX\*\* y \*\*GitHub Actions\*\*. 
+Este repositorio contiene un flujo de trabajo automatizado para gestionar, compilar y enviar múltiples versiones de un currículum (CV) profesional utilizando **LaTeX** y **GitHub Actions**. 
 
 
 
-Diseñado originalmente para perfiles técnicos (Ingeniería de IA, Software y Automatización) que requieren adaptar su perfil a diferentes mercados como \*\*Canadá\*\* y \*\*EE. \[cite\_start]UU.\*\*\[cite: 1, 11, 46].
+Diseñado originalmente para perfiles técnicos (Ingeniería de IA, Software y Automatización) que requieren adaptar su perfil a diferentes mercados como **Canadá** y **EE. [cite\_start]UU.**[cite: 1, 11, 46].
 
 
 
@@ -14,15 +14,15 @@ Diseñado originalmente para perfiles técnicos (Ingeniería de IA, Software y A
 
 
 
-* \*\*Multi-variante:\*\* Gestión centralizada de diferentes versiones del CV (ej: AI Engineer, Software Developer, Industrial Automation)\[cite: 11, 56].
+* **Multi-variante:** Gestión centralizada de diferentes versiones del CV (ej: AI Engineer, Software Developer, Industrial Automation)[cite: 11, 56].
 
-* \*\*Compilación Dinámica:\*\* Permite seleccionar qué archivo `.tex` compilar mediante un menú desplegable en GitHub Actions.
+* **Compilación Dinámica:** Permite seleccionar qué archivo `.tex` compilar mediante un menú desplegable en GitHub Actions.
 
-* \*\*Notificaciones por Email:\*\* Envío automático del PDF generado a tu correo electrónico personal\[cite: 3].
+* **Notificaciones por Email:** Envío automático del PDF generado a tu correo electrónico personal\[cite: 3].
 
-* \*\*Manejo de Errores:\*\* Notificación vía email con logs detallados en caso de fallos de sintaxis en LaTeX.
+* **Manejo de Errores:** Notificación vía email con logs detallados en caso de fallos de sintaxis en LaTeX.
 
-* \*\*Infraestructura como Código:\*\* Elimina la dependencia de editores externos de pago como Overleaf.
+* **Infraestructura como Código:** Elimina la dependencia de editores externos de pago como Overleaf.
 
 
 
@@ -32,17 +32,17 @@ Diseñado originalmente para perfiles técnicos (Ingeniería de IA, Software y A
 
 ### 1. Requisitos Previos
 
-* Una cuenta de \*\*GitHub\*\*.
+* Una cuenta de **GitHub**.
 
-* Una cuenta de \*\*Gmail\*\* con un \*App Password\* generado para el envío de correos\[cite: 3].
+* Una cuenta de **Gmail** con un *App Password* generado para el envío de correos[cite: 3].
 
 
 
 ### 2. Configuración de Secretos
 
-En tu repositorio, ve a \*\*Settings > Secrets and Variables > Actions\*\* y añade:
+En tu repositorio, ve a **Settings > Secrets and Variables > Actions** y añade:
 
-* \[cite\_start]`MAIL\_USERNAME`: Tu dirección de correo electrónico\[cite: 3].
+* [cite\_start]`MAIL\_USERNAME`: Tu dirección de correo electrónico[cite: 3].
 
 * `MAIL\_PASSWORD`: Tu contraseña de aplicación de Google.
 
@@ -50,21 +50,21 @@ En tu repositorio, ve a \*\*Settings > Secrets and Variables > Actions\*\* y añ
 
 ### 3. Ejecución del Workflow
 
-1\. Ve a la pestaña \*\*Actions\*\* en tu repositorio de GitHub.
+1. Ve a la pestaña **Actions** en tu repositorio de GitHub.
 
-2\. Selecciona \*\*"Dynamic Resume Builder"\*\*.
+2. Selecciona **"Dynamic Resume Builder"**.
 
-3\. Haz clic en \*\*"Run workflow"\*\*.
+3. Haz clic en **"Run workflow"**.
 
-4\. Selecciona la variante de CV que deseas (o selecciona `ALL` para todas).
+4. Selecciona la variante de CV que deseas (o selecciona `ALL` para todas).
 
-5\. En unos segundos, recibirás el PDF listo en tu bandeja de entrada\[cite: 3].
+5. En unos segundos, recibirás el PDF listo en tu bandeja de entrada[cite: 3].
 
 
 
 ## 🏗️ Estructura de Archivos
 
-* `/src`: Contiene los archivos `.tex`. \[cite\_start]Los cambios realizados aquí disparan las validaciones del sistema\[cite: 11, 51].
+* `/src`: Contiene los archivos `.tex`. [cite\_start]Los cambios realizados aquí disparan las validaciones del sistema[cite: 11, 51].
 
 * `.github/workflows/resume\_builder.yml`: La lógica de automatización que utiliza contenedores Docker para compilar LaTeX.
 
