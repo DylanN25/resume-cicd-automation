@@ -17,54 +17,99 @@ on:
 jobs:
   build_and_send:
     runs-on: ubuntu-latest
+
     steps:
+      # ─── 1. Checkout ────────────────────────────────────────────────────────
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Compile LaTeX
-        id: compile
+      # ─── 2. Timestamp (carpeta destino) ─────────────────────────────────────
+      - name: Set Timestamp
+        id: timestamp
+        run: echo "folder=$(date +'%Y-%m-%d_%H-%M')" >> $GITHUB_OUTPUT
+
+      # ─── 3a. Compilar UN archivo ─────────────────────────────────────────────
+      - name: Compile Single File
+        if: github.event.inputs.resume_file != 'ALL'
+        id: compile_single
         uses: xu-cheng/latex-action@v3
         with:
-          # Si eliges ALL, compila todo en /src. Si no, solo el archivo seleccionado.
-          root_file: ${{ github.event.inputs.resume_file == 'ALL' && 'src/*.tex' || format('src/{0}', github.event.inputs.resume_file) }}
-          continue_on_error: true 
+          root_file: src/${{ github.event.inputs.resume_file }}
+          work_in_root_file_dir: true   # PDF se genera en src/
 
-      - name: Send PDF on Success
-        if: steps.compile.outcome == 'success'
+      # ─── 3b. Compilar TODOS los archivos ────────────────────────────────────
+      - name: Compile ALL Files
+        if: github.event.inputs.resume_file == 'ALL'
+        id: compile_all
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: |
+            src/JosephNaranjo_Electronics.tex
+            src/JosephNaranjo_AI_Data.tex
+            src/JosephNaranjo_Software.tex
+          work_in_root_file_dir: true   # PDFs se generan en src/
+
+      # ─── 4. Mover PDFs a carpeta timestamped en /resume ─────────────────────
+      - name: Move PDFs to timestamped folder
+        run: |
+          DEST="resume/${{ steps.timestamp.outputs.folder }}"
+          mkdir -p "$DEST"
+          cp src/*.pdf "$DEST/"
+          echo "✅ PDFs copiados a $DEST:"
+          ls "$DEST"
+
+      # ─── 5. Commit y Push al repo ────────────────────────────────────────────
+      - name: Commit PDFs to repository
+        run: |
+          git config user.name "GitHub Actions Bot"
+          git config user.email "actions@github.com"
+          git add resume/
+          git commit -m "📄 Resume: ${{ github.event.inputs.resume_file }} [${{ steps.timestamp.outputs.folder }}]"
+          git push
+
+      # ─── 6. Enviar email con PDF adjunto ─────────────────────────────────────
+      - name: Send PDF via Email
         uses: dawidd6/action-send-mail@v3
         with:
           server_address: smtp.gmail.com
           server_port: 465
           username: ${{ secrets.MAIL_USERNAME }}
           password: ${{ secrets.MAIL_PASSWORD }}
-          subject: "✅ CV Generado: ${{ github.event.inputs.resume_file }} - Ndigitalhorizon"
+          subject: "✅ CV Generado: ${{ github.event.inputs.resume_file }} [${{ steps.timestamp.outputs.folder }}]"
           to: dylan.naranjo@hotmail.com
-          from: GitHub Actions Automation
+          from: GitHub Actions — NDigital Horizon
           body: |
-            Hola Joseph, 
-            La compilación ha sido exitosa. Adjunto encontrarás la versión solicitada de tu resume.
-            
-            Archivo: ${{ github.event.inputs.resume_file }}
-            Timestamp: ${{ github.event.repository.updated_at }}
-          attachments: "src/*.pdf"
+            Hola Joseph,
 
-      - name: Send Error Report on Failure
-        if: steps.compile.outcome == 'failure'
+            La compilación fue exitosa. Adjunto encontrarás el PDF generado.
+
+            Variante  : ${{ github.event.inputs.resume_file }}
+            Timestamp : ${{ steps.timestamp.outputs.folder }}
+            Guardado  : resume/${{ steps.timestamp.outputs.folder }}/
+
+            El archivo también fue commiteado al repositorio automáticamente.
+          # Ruta absoluta — esto es lo que faltaba antes
+          attachments: ${{ github.workspace }}/resume/${{ steps.timestamp.outputs.folder }}/*.pdf
+
+      # ─── 7. Notificación de error (si algún paso anterior falló) ────────────
+      - name: Send Error Report
+        if: failure()
         uses: dawidd6/action-send-mail@v3
         with:
           server_address: smtp.gmail.com
           server_port: 465
           username: ${{ secrets.MAIL_USERNAME }}
           password: ${{ secrets.MAIL_PASSWORD }}
-          subject: "❌ ERROR en Compilación LaTeX: ${{ github.event.inputs.resume_file }}"
+          subject: "❌ ERROR en compilación LaTeX: ${{ github.event.inputs.resume_file }}"
           to: dylan.naranjo@hotmail.com
-          from: GitHub Actions Automation
+          from: GitHub Actions — NDigital Horizon
           body: |
-            Atención: El archivo ${{ github.event.inputs.resume_file }} no pudo compilarse. 
-            
+            Atención: El workflow falló al procesar "${{ github.event.inputs.resume_file }}".
+
             Posibles causas:
             1. Error de sintaxis en el código LaTeX.
-            2. Falta algún paquete o recurso en la carpeta /src.
-            3. Error en la ruta del archivo.
+            2. Falta algún paquete o recurso en /src.
+            3. Problema al hacer git push (permisos del repo).
 
-            Revisa los logs detallados en la pestaña 'Actions' de tu repositorio de GitHub.
+            Revisa los logs detallados en:
+            https://github.com/${{ github.repository }}/actions
