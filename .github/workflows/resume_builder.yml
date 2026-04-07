@@ -6,12 +6,12 @@ on:
       resume_file:
         description: 'Selecciona la variante de CV a compilar'
         required: true
-        default: 'JosephNaranjo_Software.tex'
+        default: 'JosephNaranjo_Software_FullStack.tex'
         type: choice
         options:
-          - JosephNaranjo_Electronics.tex
-          - JosephNaranjo_AI_Data.tex
-          - JosephNaranjo_Software.tex
+          - JosephNaranjo_AI_Data_Engineer.tex
+          - JosephNaranjo_Electronics_Automation.tex
+          - JosephNaranjo_Software_FullStack.tex
           - ALL
 
 jobs:
@@ -121,9 +121,4 @@ jobs:
             3. Problema de permisos en git push.
 
             Logs detallados:
-            https://github.com/${{ github.repository }}/actions
-            2. Falta algún paquete o recurso en /src.
-            3. Problema al hacer git push (permisos del repo).
-
-            Revisa los logs detallados en:
             https://github.com/${{ github.repository }}/actions
