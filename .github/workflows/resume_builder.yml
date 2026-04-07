@@ -37,15 +37,17 @@ jobs:
         if: github.event.inputs.resume_file != 'ALL'
         uses: xu-cheng/latex-action@v3
         with:
-          root_file: src/${{ github.event.inputs.resume_file }}
+          root_file: ${{ github.event.inputs.resume_file }}
+          working_directory: src
 
       # ─── 3b. Compilar TODOS dinámicamente ────────────────────────────────────
       - name: Compile ALL Files
         if: github.event.inputs.resume_file == 'ALL'
         uses: xu-cheng/latex-action@v3
         with:
-          root_file: src/*.tex
-          glob_root_file: true # <--- Esto habilita la búsqueda automática de cualquier .tex en src/
+          root_file: "*.tex"
+          glob_root_file: true
+          working_directory: src
 
       # ─── 4. Verificar que los PDFs existen ──────────────────────────────────
       - name: Verify PDFs were generated
